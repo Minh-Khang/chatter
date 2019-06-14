@@ -13,6 +13,7 @@ defmodule Chatter.Application do
       # Start the endpoint when the application starts
       supervisor(ChatterWeb.Endpoint, []),
       # Start your own worker by calling: Chatter.Worker.start_link(arg1, arg2, arg3)
+      supervisor(ChatterWeb.Presence, []),
       # worker(Chatter.Worker, [arg1, arg2, arg3]),
     ]
 
