@@ -1,27 +1,11 @@
 # Chatter
 
-To start your Phoenix server:
+Simple real-time chat application
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+To Start Chatting:
+    * Visit 2 or more links
+    http://0.0.0.0:4000/?user=USERNAME (MAC) or 
+    http://localhost:4000/?user=USERNAME (PC)
+    * Modify USERNAME text in link for editing user name
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
-
-## Config git
-
-[remote "origin"]
-  url = "https://github.com/Minh-Khang/chatter.git"
-[branch "master"]
-  remote = origin
+Then users can chat to each other
