@@ -9,3 +9,12 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+@doc """
+Insert a default account to database
+"""
+alias Chatter.Repo
+alias Chatter.Accounts.User
+
+Repo.get_by(User, email: "123@lmk.com") ||
+  Repo.insert!(%User{email: "123@lmk.com", encrypt_pass: "password"})
