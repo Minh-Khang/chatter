@@ -3,9 +3,9 @@ defmodule ChatterWeb.UserControllerTest do
 
   alias Chatter.Accounts
 
-  @create_attrs %{email: "some email", encrypt_pass: "some encrypt_pass"}
-  @update_attrs %{email: "some updated email", encrypt_pass: "some updated encrypt_pass"}
-  @invalid_attrs %{email: nil, encrypt_pass: nil}
+  @create_attrs %{email: "some email", password_hash: "some password_hash"}
+  @update_attrs %{email: "some updated email", password_hash: "some updated password_hash"}
+  @invalid_attrs %{email: nil, password_hash: nil}
 
   def fixture(:user) do
     {:ok, user} = Accounts.create_user(@create_attrs)

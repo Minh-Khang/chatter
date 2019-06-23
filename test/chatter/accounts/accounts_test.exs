@@ -6,9 +6,9 @@ defmodule Chatter.AccountsTest do
   describe "users" do
     alias Chatter.Accounts.User
 
-    @valid_attrs %{email: "some email", encrypt_pass: "some encrypt_pass"}
-    @update_attrs %{email: "some updated email", encrypt_pass: "some updated encrypt_pass"}
-    @invalid_attrs %{email: nil, encrypt_pass: nil}
+    @valid_attrs %{email: "some email", password_hash: "some password_hash"}
+    @update_attrs %{email: "some updated email", password_hash: "some updated password_hash"}
+    @invalid_attrs %{email: nil, password_hash: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -32,7 +32,7 @@ defmodule Chatter.AccountsTest do
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
       assert user.email == "some email"
-      assert user.encrypt_pass == "some encrypt_pass"
+      assert user.password_hash == "some password_hash"
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -44,7 +44,7 @@ defmodule Chatter.AccountsTest do
       assert {:ok, user} = Accounts.update_user(user, @update_attrs)
       assert %User{} = user
       assert user.email == "some updated email"
-      assert user.encrypt_pass == "some updated encrypt_pass"
+      assert user.password_hash == "some updated password_hash"
     end
 
     test "update_user/2 with invalid data returns error changeset" do

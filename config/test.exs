@@ -17,3 +17,8 @@ config :chatter, Chatter.Repo,
   database: "chatter_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+# Configure Argon for speed up tests
+config :argon2_elixir,
+  t_cost: 1,
+  m_cost: 8

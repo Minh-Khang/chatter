@@ -17,4 +17,4 @@ alias Chatter.Repo
 alias Chatter.Accounts.User
 
 Repo.get_by(User, email: "123@lmk.com") ||
-  Repo.insert!(%User{email: "123@lmk.com", encrypt_pass: "password"})
+  Repo.insert!(%User{email: "123@lmk.com", password_hash: "password"})

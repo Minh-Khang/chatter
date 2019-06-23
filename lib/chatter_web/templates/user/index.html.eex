@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Email</th>
-      <!-- <th>Encrypt pass</th> -->
+      <!-- <th>Password Hash</th> -->
 
       <th></th>
     </tr>
@@ -13,7 +13,7 @@
 <%= for user <- @users do %>
     <tr>
       <td><%= user.email %></td>
-      <!-- <td><%= user.encrypt_pass %></td> -->
+      <!-- <td><%= user.password_hash %></td> -->
 
       <td class="text-right">
         <span><%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %></span>
