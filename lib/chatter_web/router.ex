@@ -13,11 +13,33 @@ defmodule ChatterWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", ChatterWeb do
-    pipe_through :browser # Use the default browser stack
+  # Our pipeline implements "maybe" authenticated.
+  # We'll use the `:ensure_auth` below for when we
+  # need to make sure someone is logged in.
+  pipeline :auth do
+    plug Chatter.Accounts.Pipeline
+  end
 
-    get "/", PageController, :index
-    resources "/users", UserController
+  # We use ensure_auth to fail if there is no one logged in
+  pipeline :ensure_auth do
+    plug Guardian.Plug.EnsureAuthenticated
+  end
+
+  scope "/", ChatterWeb do
+    pipe_through [:browser, :auth] # Use the default browser stack
+
+    get "/", SessionController, :new
+    # post "/", SessionController, :create
+    # delete "/", SessionController, :delete
+    resources "/", SessionController, only: [:create, :delete]
+    resources "/users", UserController, only: [:new, :create]
+  end
+
+  # Definitely logged in scope
+  scope "/", ChatterWeb do
+    pipe_through [:browser, :auth, :ensure_auth]
+    resources "/users", UserController, except: [:new, :create]
+    get "/chat", PageController, :index
   end
 
   # Other scopes may use custom stacks.
