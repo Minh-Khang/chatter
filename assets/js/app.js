@@ -14,11 +14,13 @@ socket.connect()
 
 let presences = {}
 
+// Convert date to locale string
 let formartedTimestamp = (Ts) => {
   let date = new Date(Ts)
   return date.toLocaleString()
 }
 
+//Parse data form Presence.track
 let listBy = (user, {
   metas: metas
 }) => {
@@ -28,6 +30,7 @@ let listBy = (user, {
   }
 }
 
+// Render User online presence_state
 let userList = document.getElementById("userList")
 let render = (presences) => {
   userList.innerHTML = Presence.list(presences, listBy)
@@ -58,6 +61,7 @@ room.on("message:new", message => {
 
 room.join()
 
+// Enter key listener
 let messageInput = document.getElementById("newMessage")
 messageInput.addEventListener("keypress", (e) => {
   if (e.keyCode == 13 && messageInput.value != "") {
@@ -66,6 +70,7 @@ messageInput.addEventListener("keypress", (e) => {
   }
 })
 
+// Render Message to chat screen
 let messageList = document.getElementById("messageList")
 let renderMessage = (message) => {
   let messageElement = document.createElement("li")
