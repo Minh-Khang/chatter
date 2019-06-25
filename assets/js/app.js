@@ -44,6 +44,7 @@ let render = (presences) => {
     .join("")
 }
 
+// Callback fom Presence
 let room = socket.channel("room:lobby")
 room.on("presence_state", state => {
   presences = Presence.syncState(presences, state)
